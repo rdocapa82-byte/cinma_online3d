@@ -1,0 +1,44 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#07080d"><title>CINEVERSE 3D</title>
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"/vendor/three.module.js"}}</script>
+<script src="/socket.io/socket.io.js"></script></head><body>
+<canvas id="game"></canvas>
+<video id="vid" playsinline preload="auto"></video>
+<div id="loading"><h1>CINEVERSE <b>3D</b></h1><div class="bar"><i id="lbar"></i></div><p id="lpct">0%</p></div>
+<div id="home" class="hidden"><div class="card">
+  <h1>CINEVERSE <b>3D</b></h1><p class="tag">Assista junto. Mesmo estando longe.</p>
+  <label>Seu nome<input id="name" maxlength="16" placeholder="Visitante"></label>
+  <details open><summary>Personagem</summary><div id="avedit"></div></details>
+  <div class="tabs"><button id="tjoin" class="on">ENTRAR NO CINEMA</button><button id="tcreate">CRIAR SALA</button></div>
+  <div id="pjoin"><input id="code" maxlength="8" placeholder="Código da sala" style="text-transform:uppercase"><input id="jpass" type="password" placeholder="Senha (se houver)">
+    <button class="pri" id="bjoin">ENTRAR NO CINEMA</button><div id="pubs"></div></div>
+  <div id="pcreate" class="hidden"><label class="row"><input type="checkbox" id="cpub"> Sala pública</label>
+    <input id="cpass" type="password" placeholder="Senha opcional"><label>Máx. jogadores <input id="cmax" type="number" min="2" max="20" value="20"></label>
+    <button class="pri" id="bcreate">CRIAR SALA</button></div>
+  <p id="err" class="err"></p></div></div>
+<div id="hud" class="hidden">
+  <div id="top"><span id="rc"></span><span id="pc"></span><span id="pg"></span><span id="fps"></span></div>
+  <div id="side"><button data-p="chat">💬</button><button data-p="pl">👥</button><button data-p="set">⚙️</button><button id="bcast">🖥️</button><button id="bro">🌐</button><button id="bleave">⎋</button></div>
+  <div class="pnl hidden" id="chat"><div id="msgs"></div><div class="emo"></div><div class="row"><input id="cin" maxlength="300" placeholder="Mensagem..."><button id="csend">➤</button></div></div>
+  <div class="pnl hidden" id="pl"><h3>Jogadores</h3><div id="plist"></div></div>
+  <div class="pnl hidden" id="set"><h3>Configurações</h3>
+    <label>Volume<input type="range" id="s_vol" min="0" max="1" step=".05"></label>
+    <label>Sensibilidade<input type="range" id="s_sens" min=".3" max="3" step=".1"></label>
+    <label>Gráficos<select id="s_q"><option value="low">Baixo</option><option value="mid">Médio</option><option value="high">Alto</option></select></label>
+    <label>Câmera<select id="s_view"><option value="third">Terceira pessoa</option><option value="first">Primeira pessoa</option></select></label>
+    <label class="row"><input type="checkbox" id="s_names"> Mostrar nomes</label><label class="row"><input type="checkbox" id="s_chat"> Mostrar chat</label>
+    <label class="row"><input type="checkbox" id="s_fps"> FPS</label><label class="row"><input type="checkbox" id="s_ping"> Ping</label></div>
+  <div class="pnl" id="browser" hidden><div class="tb"><button id="b_back">◀</button><button id="b_fwd">▶</button><button id="b_ref">⟳</button><button id="b_home">⌂</button>
+    <input id="b_addr" placeholder="Pesquise ou digite um endereço"><button id="b_fs">⛶</button><button id="b_x">✕</button></div>
+    <div class="tb"><input id="b_vurl" placeholder="URL de vídeo (.mp4 / .webm)"><button id="b_vgo">▶ ABRIR VÍDEO</button></div>
+    <div id="b_body"><div id="b_home_pg"><h2>Navegador</h2><div class="tiles"></div></div>
+      <div id="b_block" class="hidden"><p>Este site não permite reprodução incorporada.</p><button class="pri" id="b_new">ABRIR EM NOVA ABA</button></div>
+      <iframe id="b_frame" class="hidden" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation" allow="fullscreen; autoplay; encrypted-media" referrerpolicy="no-referrer"></iframe></div></div>
+  <div id="bar"><button id="pp">▶</button><button id="bk">−10</button><button id="fw">+10</button><input type="range" id="seek" min="0" max="1000" value="0"><span id="tm">0:00</span>
+    <input type="range" id="vol" min="0" max="1" step=".05" value=".8"><button id="sy">⟲</button><button id="fs">⛶</button></div>
+  <div id="joy"><i></i></div><div id="act"><button id="run">⚡</button><button id="sit" class="pri hidden">SENTAR</button></div>
+</div>
+<button id="eye">👁</button><div id="toast"></div>
+<script type="module" src="js/main.js"></script></body></html>
